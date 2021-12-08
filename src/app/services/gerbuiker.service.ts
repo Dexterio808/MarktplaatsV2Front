@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
-import {Gebruiker} from "../components/gebruiker-formulier/gebruiker";
+import {Gebruiker} from "../models/gebruiker";
 import {serverUrl} from "../../environments/environment";
 
 @Injectable({

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
-import {Gebruiker} from "./gebruiker";
+import {Gebruiker} from "../../models/gebruiker";
 import {GebruikerService} from "../../services/gerbuiker.service";
 
 
