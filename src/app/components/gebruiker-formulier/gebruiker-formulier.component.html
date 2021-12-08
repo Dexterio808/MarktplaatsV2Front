@@ -1,0 +1,13 @@
+<div class="gerbuikerRegistreren">
+  <form (ngSubmit)="addGebruiker()" [formGroup]="gebruikerForm">
+    <div>
+      <label for="inputNaam">naam:</label>
+      <input type="text" formControlName="naam" name="naam" id="inputNaam" class="form-control">
+    </div>
+    <div>
+      <label for="inputEmail">E-mail address:</label>
+      <input type="text" formControlName="email" name="email" id="inputEmail" class="form-control">
+      <button class="btn btn-primary">Registreren</button>
+      </div>
+  </form>
+</div>
