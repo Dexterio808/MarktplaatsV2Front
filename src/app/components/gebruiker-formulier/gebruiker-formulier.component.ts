@@ -33,12 +33,11 @@ export class GebruikerFormulierComponent implements OnInit {
   @Input() gebruiker: Gebruiker;
 
   BezorgData: Array<any> = [
-    {name:'Afhalen' , value:'AFHALEN'},
-    {name:'Thuis Bezorgen' , value:'THUIS'},
-    {name:'Post' , value:'POST'},
-    {name:'Rembours' , value:'REMBOURS'}
+    {name: 'Afhalen', value: 'AFHALEN'},
+    {name: 'Thuis Bezorgen', value: 'THUIS'},
+    {name: 'Post', value: 'POST'},
+    {name: 'Rembours', value: 'REMBOURS'}
   ];
-
 
   gebruikerForm: FormGroup;
 
@@ -49,8 +48,8 @@ export class GebruikerFormulierComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requireToS,
     this.gebruikerForm = this.fb.group({
+      tos: this.requireToS,
       naam: [''],
       email: this.emailInpunt,
       adres: this.fb.group({
@@ -59,23 +58,23 @@ export class GebruikerFormulierComponent implements OnInit {
         postcode: [''],
         stad: [''],
       }),
-      bezorgwijze: this.fb.array([
-        this.fb.group({sel: false}),
-        this.fb.group({sel: false}),
-        this.fb.group({sel: false}),
-        this.fb.group({sel: false})
-      ])
+
+      bezorgwijze: this.fb.group({
+        thuis: [false],
+        magazijn: [false],
+        versturen: [false],
+        rembours: [false],
+      })
     });
   }
 
 
-
   addGebruiker(): void {
     console.log(this.gebruikerForm.value)
-    console.log(this.gebruikerForm.value.bezorgwijze.setValue(['test']))
     console.log(this.gebruikerForm.value.bezorgwijze);
     this.gebruikerService.add(this.gebruikerForm.value);
-    this.gebruikerForm.reset();
+    this.gebruikerForm.reset(); //haalt het formulier leeg na registratie
+    this.ngOnInit(); //zet het formulier terug naar default values
   }
 
 

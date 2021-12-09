@@ -33,26 +33,26 @@
     </div>
 
 
-    <div formArrayName="bezorgwijze">
-      <div class="form-check" formGroupName="0">
-        <input class="form-check-input" type="checkbox" id="afhaal" formControlName="sel">
-        <label class="form-check-label" for="afhaal">Afhaal</label>
-      </div>
-      <div class="form-check" formGroupName="1">
-        <input class="form-check-input" type="checkbox" id="thuis" formControlName="sel">
+    <div formGroupName="bezorgwijze">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="thuis" formControlName="thuis">
         <label class="form-check-label" for="thuis">Thuis</label>
       </div>
-      <div class="form-check" formGroupName="2">
-        <input class="form-check-input" type="checkbox" id="post" formControlName="sel">
-        <label class="form-check-label" for="post">Post</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="magazijn" formControlName="magazijn">
+        <label class="form-check-label" for="magazijn">Magazijn</label>
       </div>
-      <div class="form-check" formGroupName="3">
-        <input class="form-check-input" type="checkbox" id="rembours" formControlName="sel">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="versturen" formControlName="versturen">
+        <label class="form-check-label" for="versturen">Versturen</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="rembours" formControlName="rembours">
         <label class="form-check-label" for="rembours">Rembours</label>
       </div>
     </div>
     <div>
-      <label><input type="checkbox" formControlName="tos" class =  "form-control"> I Have Read the Terms of Service (required)</label>
+      <label><input type="checkbox" formControlName="tos" class ="form-control"> I Have Read the Terms of Service (required)</label>
     </div>
     <hr>
     <div>
