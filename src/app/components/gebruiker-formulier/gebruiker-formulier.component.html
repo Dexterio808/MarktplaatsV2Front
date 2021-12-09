@@ -51,9 +51,12 @@
         <label class="form-check-label" for="rembours">Rembours</label>
       </div>
     </div>
-
     <div>
-      <button class="btn btn-primary">Registreren</button>
+      <label><input type="checkbox" formControlName="tos" class =  "form-control"> I Have Read the Terms of Service (required)</label>
+    </div>
+    <hr>
+    <div>
+      <button type="submit" [disabled]="gebruikerForm.invalid">Registreren</button>
     </div>
   </form>
 </div>

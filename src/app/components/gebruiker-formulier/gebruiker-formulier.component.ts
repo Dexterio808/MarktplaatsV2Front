@@ -42,13 +42,14 @@ export class GebruikerFormulierComponent implements OnInit {
 
   gebruikerForm: FormGroup;
 
-
+  requireToS = new FormControl('', [Validators.requiredTrue])
   emailInpunt = new FormControl('', [Validators.required, emailValidator])
 
   constructor(private gebruikerService: GebruikerService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.requireToS,
     this.gebruikerForm = this.fb.group({
       naam: [''],
       email: this.emailInpunt,
