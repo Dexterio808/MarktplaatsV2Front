@@ -1,11 +1,19 @@
-import {Component, Input, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators
+} from '@angular/forms';
 import {Gebruiker} from "../../models/gebruiker";
 import {GebruikerService} from "../../services/gerbuiker.service";
 
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
-  if(!control.value){
+  if (!control.value) {
     return null;
   }
 
@@ -24,23 +32,50 @@ export class GebruikerFormulierComponent implements OnInit {
 
   @Input() gebruiker: Gebruiker;
 
+  BezorgData: Array<any> = [
+    {name:'Afhalen' , value:'AFHALEN'},
+    {name:'Thuis Bezorgen' , value:'THUIS'},
+    {name:'Post' , value:'POST'},
+    {name:'Rembours' , value:'REMBOURS'}
+  ];
+
+
   gebruikerForm: FormGroup;
+
+
   emailInpunt = new FormControl('', [Validators.required, emailValidator])
 
-
-
-  constructor(private gebruikerService: GebruikerService) { }
+  constructor(private gebruikerService: GebruikerService, private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
-    this.gebruikerForm = new FormGroup({
-      naam: new FormControl(''),
+    this.gebruikerForm = this.fb.group({
+      naam: [''],
       email: this.emailInpunt,
+      adres: this.fb.group({
+        straat: [''],
+        huisnummer: [''],
+        postcode: [''],
+        stad: [''],
+      }),
+      bezorgwijze: this.fb.array([
+        this.fb.group({sel: false}),
+        this.fb.group({sel: false}),
+        this.fb.group({sel: false}),
+        this.fb.group({sel: false})
+      ])
     });
   }
 
+
+
   addGebruiker(): void {
+    console.log(this.gebruikerForm.value)
+    console.log(this.gebruikerForm.value.bezorgwijze.setValue(['test']))
+    console.log(this.gebruikerForm.value.bezorgwijze);
     this.gebruikerService.add(this.gebruikerForm.value);
     this.gebruikerForm.reset();
   }
+
 
 }
