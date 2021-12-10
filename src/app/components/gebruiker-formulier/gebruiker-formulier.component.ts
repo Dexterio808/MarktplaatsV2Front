@@ -59,7 +59,7 @@ export class GebruikerFormulierComponent implements OnInit {
         stad: [''],
       }),
 
-      bezorgwijze: this.fb.group({
+      bezorgwijzen: this.fb.group({
         thuis: [false],
         magazijn: [false],
         versturen: [false],
