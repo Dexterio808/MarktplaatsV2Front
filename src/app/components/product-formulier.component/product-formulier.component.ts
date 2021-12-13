@@ -13,6 +13,7 @@ import {Gebruiker} from "../../models/gebruiker";
 import {GebruikerService} from "../../services/gebruiker.service";
 import {ProductService} from "../../services/product.service";
 import {UserService} from "../../services/user.service";
+import {ProductCategorie} from "../../models/productcategorie";
 
 /*function postDateSetter(){
   return Date.now().toLocaleString('en-GB');*/
@@ -28,8 +29,10 @@ export class ProductFormulierComponent implements OnInit {
 
   productForm: FormGroup;
 
-
   productsoort: string;
+  productcategorie: ProductCategorie;
+
+  categorieenUpdated = this.productService.categorieenUpdated$;
 
   constructor(private userService: UserService, private productService: ProductService, private fb: FormBuilder) {
   }
@@ -46,8 +49,8 @@ export class ProductFormulierComponent implements OnInit {
         ideal: [false],
         creditcard: [false],
         contant: [false],
-      })
-      /*categorie*/
+      }),
+      categorie: this.categorieenUpdated
       /*bezorgwijzen*/
     });
   }

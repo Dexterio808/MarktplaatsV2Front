@@ -22,6 +22,13 @@
       <input type="text" formControlName="omschrijving" name="omschrijving" id="inputOmschrijving" class="form-control">
     </div>
 
+    <div>
+      <label for="categorie">Categorie:</label>
+      <select id="categorie" name="categorie" [(ngModel)]="productcategorie">
+        <option *ngFor="let c of categorieenUpdated; let i = index" [value]="c.omschrijving">Categorie</option>
+      </select>
+    </div>
+
 
     <div formGroupName="betaalwijzen">
       <div class="form-check">
