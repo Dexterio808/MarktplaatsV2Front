@@ -25,6 +25,7 @@ export class GebruikerService {
   }
 
   add(g: Gebruiker): void {
+    //console.log(g.bezorgwijzen)
     this.http.post<Gebruiker>(this.uri, g).subscribe( () => this.getAll());
 }
 
