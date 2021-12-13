@@ -9,7 +9,7 @@ import {
   Validators
 } from '@angular/forms';
 import {Gebruiker} from "../../models/gebruiker";
-import {GebruikerService} from "../../services/gerbuiker.service";
+import {GerbuikerService} from "../../services/gebruiker.service";
 
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
@@ -44,7 +44,7 @@ export class GebruikerFormulierComponent implements OnInit {
   requireToS = new FormControl('', [Validators.requiredTrue])
   emailInpunt = new FormControl('', [Validators.required, emailValidator])
 
-  constructor(private gebruikerService: GebruikerService, private fb: FormBuilder) {
+  constructor(private gebruikerService: GerbuikerService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {

@@ -8,13 +8,15 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {JwtInterceptor} from "./util/jwt.interceptor";
+import {ProductFormulierComponent} from "./components/product-formulier.component/product-formulier.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GebruikerFormulierComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFormulierComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule,
