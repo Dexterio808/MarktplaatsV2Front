@@ -10,6 +10,8 @@ import {Product} from "../models/product";
 export class ProductService {
 
   uri = serverUrl + '/producten';
+  uri2 = serverUrl+ '/artikelen';
+  uri3 = serverUrl+ '/diensten';
 
   constructor(private http: HttpClient) {
   }
@@ -24,8 +26,12 @@ export class ProductService {
       );                               // rise the contactsUpdated event and supply the contacts
   }
 
-  add(p: Product): void {
-    this.http.post<Product>(this.uri, p).subscribe( () => this.getAll());
+  add(p: Product, soort: string): void {
+    if(soort==="Artikel"){
+      this.http.post<Product>(this.uri2, p).subscribe( () => this.getAll());
+    } else {
+      this.http.post<Product>(this.uri3, p).subscribe(() => this.getAll());
+    }
   }
 
   delete(p: Product): void {

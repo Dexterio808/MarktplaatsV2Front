@@ -10,10 +10,12 @@ import {
 } from '@angular/forms';
 import {Product} from "../../models/product";
 import {Gebruiker} from "../../models/gebruiker";
+import {GebruikerService} from "../../services/gebruiker.service";
+import {ProductService} from "../../services/product.service";
+import {UserService} from "../../services/user.service";
 
-function postDateSetter(){
-  return Date.now();
-}
+/*function postDateSetter(){
+  return Date.now().toLocaleString('en-GB');*/
 
 @Component({
   selector: 'app-product-formulier',
@@ -26,11 +28,10 @@ export class ProductFormulierComponent implements OnInit {
 
   productForm: FormGroup;
 
-  postDate: Date;
-  gebruiker: Gebruiker;
 
+  productsoort: string;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private userService: UserService, private productService: ProductService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -40,24 +41,25 @@ export class ProductFormulierComponent implements OnInit {
       omschrijving: [''],
       verkocht:[false],
       gereserveerd:[false],
-      postDate: postDateSetter(),
-      /*verkoper: this.gebruiker,*/
+      verkoper: this.userService.loggedInUser,
       betaalwijzen: this.fb.group({
         ideal: [false],
         creditcard: [false],
         contant: [false],
       })
       /*categorie*/
-      /*soort*/
+      /*bezorgwijzen*/
     });
   }
 
 
   addProduct(): void {
-    console.log(this.productForm.value)
-/*    this.productService.add(this.gebruikerForm.value);
-    this.gebruikerForm.reset(); //haalt het formulier leeg na registratie
-    this.ngOnInit(); //zet het formulier terug naar default values*/
+    console.log(this.productForm.value, this.productsoort);
+    console.log("loggedinuser: " + this.userService.loggedInUser);
+    console.log("loggedinuser id " + this.userService.loggedInUser.id);
+    this.productService.add(this.productForm.value, this.productsoort);
+    this.productForm.reset(); //haalt het formulier leeg na registratie
+    this.ngOnInit(); //zet het formulier terug naar default values
   }
 
 

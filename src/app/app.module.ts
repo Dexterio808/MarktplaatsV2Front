@@ -22,7 +22,8 @@ import {ProductFormulierComponent} from "./components/product-formulier.componen
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule,
     RouterModule.forRoot([
       {path: 'gebruikers', component: GebruikerFormulierComponent},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'producten', component: ProductFormulierComponent}
     ])
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
