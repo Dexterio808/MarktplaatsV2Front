@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,9 @@ export class ProductListComponent {
   producten$ = this.productService.productenUpdated$;
   producten: Product[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +36,11 @@ export class ProductListComponent {
         p.soort = "Dienst"
       }
     })
+  }
+
+  goToDetails(id: number): void {
+    console.log(id);
+    this.router.navigate(['/productdetails', id])
   }
 
 }

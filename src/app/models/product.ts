@@ -3,7 +3,7 @@ import {Gebruiker} from "./gebruiker";
 import {Bezorgwijzen} from "./Bezorgwijzen";
 
 export interface Product {
-  id?: number;
+  id: number;
   naam: string;
   prijs: number;
   categorie: ProductCategorie;

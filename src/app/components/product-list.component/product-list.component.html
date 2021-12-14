@@ -9,8 +9,17 @@
     <th scope="col">categorie</th>
     <th scope="col">soort</th>
   </tr>
-  <tr scope="row" *ngFor="let c of producten">
+  <tr scope="row" *ngFor="let c of producten ">
     <td>{{c.naam}} {{c.prijs}} {{c.categorie.omschrijving}}{{c.soort}}</td>
-    <button type="button" class="btn btn-secondary btn-sm" routerLink="/productdetails/{{c.id}}">Details</button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="goToDetails(c.id)">Details</button>
+
+   <!-- <a [routerLink]="['product-list']" [queryParams]="{ page: 99 }">Go to Page 99</a>-->
+
+   <!-- <a *ngFor="let product of producten"
+       [routerLink]="['/productdetails', product.id]">
+      {{ product.naam}}
+    </a>-->
+
+
   </tr>
 </table>
