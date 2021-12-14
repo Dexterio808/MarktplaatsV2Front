@@ -57,8 +57,13 @@ export class ProductFormulierComponent implements OnInit {
         creditcard: [false],
         contant: [false],
       }),
-      categorie: this.categorie
-      /*bezorgwijzen*/
+      categorie: this.categorie,
+      bezorgwijzen: this.fb.group({
+        thuis: [false],
+        magazijn: [false],
+        versturen: [false],
+        rembours: [false],
+      })
     });
   }
 
