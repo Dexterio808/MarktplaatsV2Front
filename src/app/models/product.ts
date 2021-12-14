@@ -12,7 +12,7 @@ export interface Product {
   gereserveerd: boolean;
   postDate: Date;
   verkoper: Gebruiker;
-  betaalwijzen: object;
+/*  betaalwijzen: object;*/
   bezorgwijzen: Bezorgwijzen;
 
   soort: string;

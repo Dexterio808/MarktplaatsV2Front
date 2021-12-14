@@ -1,7 +1,85 @@
+<main class="container">
 
-<td>{{product.id}} {{product.naam}}</td>
-<td>{{product.categorie.omschrijving}}</td>
-<td>
-  <button class="btn">Edit</button>
-  <button class="btn btn-danger">Delete</button>
-</td>
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+    <img data-image="blue" src="http://localhost:4200/cirkel-belastingdienst.png" alt="">
+    <img data-image="red" class="active" src="http://localhost:4200/cirkel-belastingdienst.png" alt="">
+    <img data-image="black" src="http://localhost:4200/cirkel-belastingdienst.png" alt="">
+  </div>
+
+
+  <!-- Right Column -->
+  <div class="right-column">
+
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>{{product.categorie.omschrijving}}</span>
+      <h1>{{product.naam}}</h1>
+      <p>{{product.omschrijving}}</p>
+      <p>Aangeboden door: '{{product.verkoper.naam}}'  op  {{product.postDate}}</p>
+    </div>
+
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+
+      <!-- Product Color -->
+      <div class="product-color">
+        <span>Kies Betaalwijze</span>
+
+        <div class="color-choose">
+          <div>
+            <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+            <label for="red"><span></span></label>
+          </div>
+          <div>
+            <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+            <label for="blue"><span></span></label>
+          </div>
+          <div>
+            <input data-image="black" type="radio" id="black" name="color" value="black">
+            <label for="black"><span></span></label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cable Configuration -->
+      <div class="cable-config">
+        <span>Kies Bezorgwijze</span>
+        <div class="cable-choose">
+          <button *ngIf="product.bezorgwijzen.rembours===false">Rembours Versturen</button>
+          <button *ngIf="product.bezorgwijzen.thuis===false">Afhalen Thuis</button>
+          <button *ngIf="product.bezorgwijzen.magazijn===false">Afhalen Magazijn</button>
+          <button *ngIf="product.bezorgwijzen.versturen===false">Versturen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>€{{product.prijs}}</span>
+      <a href="#" class="cart-btn">Add to cart</a>
+    </div>
+  </div>
+</main>
+
+ <!--         <h1>Productinformatie</h1>
+          <h2>{{product.naam}}</h2>
+          <td>{{product.id}}</td>
+          <td>{{product.categorie.omschrijving}}</td>
+          <td>{{product.naam}}</td>
+          <td>{{product.prijs}}</td>
+          <td>{{product.postDate}}</td>
+          <td>{{product.verkoper.naam}}</td>
+
+          <h2>Bezorgwijzen:</h2>
+          <td *ngIf="product.bezorgwijzen.rembours===true">Rembours Versturen</td>
+          <td *ngIf="product.bezorgwijzen.thuis===true">Afhalen Thuis</td>
+          <td *ngIf="product.bezorgwijzen.magazijn===true">Afhalen Magazijn</td>
+          <td *ngIf="product.bezorgwijzen.versturen===true">Versturen</td>
+
+          <td>
+            <button class="btn">Voeg toe aan Winkelwagen</button>
+            <button class="btn btn-danger">Ga Terug</button>
+          </td>-->
+

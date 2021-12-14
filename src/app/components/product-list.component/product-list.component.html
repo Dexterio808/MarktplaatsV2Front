@@ -1,25 +1,23 @@
 <h2>Producten</h2>
 
 <!--<app-search-contact></app-search-contact>-->
-
 <table class="table">
+  <thead class="thead-light">
   <tr>
-    <th scope="col">naam</th>
-    <th scope="col">prijs</th>
-    <th scope="col">categorie</th>
-    <th scope="col">soort</th>
+    <th scope="col">Naam</th>
+    <th scope="col">Prijs</th>
+    <th scope="col">Categorie</th>
+    <th scope="col">Soort</th>
+    <th scope="col"></th>
   </tr>
+  </thead>
+  <tbody>
   <tr scope="row" *ngFor="let c of producten ">
-    <td>{{c.naam}} {{c.prijs}} {{c.categorie.omschrijving}}{{c.soort}}</td>
-    <button type="button" class="btn btn-secondary btn-sm" (click)="goToDetails(c.id)">Details</button>
-
-   <!-- <a [routerLink]="['product-list']" [queryParams]="{ page: 99 }">Go to Page 99</a>-->
-
-   <!-- <a *ngFor="let product of producten"
-       [routerLink]="['/productdetails', product.id]">
-      {{ product.naam}}
-    </a>-->
-
-
+    <td>{{c.naam}}</td>
+    <td>{{c.prijs}}</td>
+    <td>{{c.categorie.omschrijving}}</td>
+    <td>{{c.soort}}</td>
+    <td><button type="button" class="btn btn-primary" (click)="goToDetails(c.id)">Details</button></td>
   </tr>
+  </tbody>
 </table>
