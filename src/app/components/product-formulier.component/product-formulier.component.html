@@ -24,8 +24,8 @@
 
     <div>
       <label for="categorie">Categorie:</label>
-      <select id="categorie" name="categorie" [(ngModel)]="productcategorie">
-        <option *ngFor="let c of categorieenUpdated; let i = index" [value]="c.omschrijving">Categorie</option>
+      <select id="categorie" name="categorie" formControlName="categorie">
+        <option *ngFor="let c of categorieen" [value]="c.id">{{c.omschrijving}}</option>
       </select>
     </div>
 

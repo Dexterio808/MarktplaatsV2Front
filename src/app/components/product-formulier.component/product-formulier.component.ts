@@ -14,6 +14,7 @@ import {GebruikerService} from "../../services/gebruiker.service";
 import {ProductService} from "../../services/product.service";
 import {UserService} from "../../services/user.service";
 import {ProductCategorie} from "../../models/productcategorie";
+import {CategorieenService} from "../../services/categorieen.service";
 
 /*function postDateSetter(){
   return Date.now().toLocaleString('en-GB');*/
@@ -30,27 +31,33 @@ export class ProductFormulierComponent implements OnInit {
   productForm: FormGroup;
 
   productsoort: string;
-  productcategorie: ProductCategorie;
+  categorie: ProductCategorie = {id: 1, omschrijving: "test"} as ProductCategorie;
 
-  categorieenUpdated = this.productService.categorieenUpdated$;
+  categorieenUpdated$ = this.categorieenService.categorieenUpdated$;
+  categorieen: ProductCategorie[];
 
-  constructor(private userService: UserService, private productService: ProductService, private fb: FormBuilder) {
+  constructor(private userService: UserService,
+              private productService: ProductService,
+              private fb: FormBuilder,
+              private categorieenService: CategorieenService) {
   }
 
   ngOnInit(): void {
+    this.categorieenUpdated$.subscribe(c => this.categorieen = c);
+    this.categorieenService.getAllCategorieen();
     this.productForm = this.fb.group({
       naam: [''],
       prijs: [''],
       omschrijving: [''],
-      verkocht:[false],
-      gereserveerd:[false],
+      verkocht: [false],
+      gereserveerd: [false],
       verkoper: this.userService.loggedInUser,
       betaalwijzen: this.fb.group({
         ideal: [false],
         creditcard: [false],
         contant: [false],
       }),
-      categorie: this.categorieenUpdated
+      categorie: this.categorie
       /*bezorgwijzen*/
     });
   }

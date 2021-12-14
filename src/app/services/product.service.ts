@@ -14,21 +14,13 @@ export class ProductService {
   uri2 = serverUrl+ '/artikelen';
   uri3 = serverUrl+ '/diensten';
 
-  uriCategorie = serverUrl+ '/categorie';
-
   constructor(private http: HttpClient) {
   }
 
-  private _categorieenUpdated$ = new Subject<ProductCategorie[]>();
 
   private _productenUpdated$ = new Subject<Product[]>();
 
-  getAllCategorieen(): void {
-    this.http.get<ProductCategorie[]>(this.uriCategorie) // get contacts from server
-      .subscribe(                      // when the results arrive (some time in the future):
-        categorieen => this._categorieenUpdated$.next(categorieen)
-      );                               // rise the contactsUpdated event and supply the contacts
-  }
+
 
 
   getAll(): void {
@@ -40,9 +32,9 @@ export class ProductService {
 
   add(p: Product, soort: string): void {
     if(soort==="Artikel"){
-      this.http.post<Product>(this.uri2, p).subscribe( () => this.getAll());
+      this.http.post<Product>(this.uri2+'/input', p).subscribe( () => this.getAll());
     } else {
-      this.http.post<Product>(this.uri3, p).subscribe(() => this.getAll());
+      this.http.post<Product>(this.uri3+'/input', p).subscribe(() => this.getAll());
     }
   }
 
@@ -58,10 +50,6 @@ export class ProductService {
 
   get productenUpdated$(): Subject<Product[]> {
     return this._productenUpdated$;
-  }
-
-  get categorieenUpdated$(): Subject<ProductCategorie[]>{
-    return this._categorieenUpdated$;
   }
 
   get(id: number): Observable<Product> {
