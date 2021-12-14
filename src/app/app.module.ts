@@ -9,6 +9,7 @@ import {RouterModule} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {JwtInterceptor} from "./util/jwt.interceptor";
 import {ProductFormulierComponent} from "./components/product-formulier.component/product-formulier.component";
+import {ProductListComponent} from "./components/product-list.component/product-list.component";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {ProductFormulierComponent} from "./components/product-formulier.componen
     AppComponent,
     GebruikerFormulierComponent,
     LoginComponent,
-    ProductFormulierComponent
+    ProductFormulierComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule,

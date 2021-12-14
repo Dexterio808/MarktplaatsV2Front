@@ -1,0 +1,16 @@
+<h2>Producten</h2>
+
+<!--<app-search-contact></app-search-contact>-->
+
+<table class="table">
+  <tr>
+    <th scope="col">naam</th>
+    <th scope="col">prijs</th>
+    <th scope="col">categorie</th>
+    <th scope="col">soort</th>
+  </tr>
+  <tr scope="row" *ngFor="let c of producten">
+    <td>{{c.naam}} {{c.prijs}} {{c.categorie.omschrijving}}{{c.soort}}</td>
+    <button type="button" class="btn btn-secondary btn-sm" routerLink="/productdetails/{{c.id}}">Details</button>
+  </tr>
+</table>
