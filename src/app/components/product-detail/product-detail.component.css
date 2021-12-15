@@ -15,12 +15,12 @@ html, body {
 
 /* Columns */
 .left-column {
-  width: 65%;
+  width: 50%;
   position: relative;
 }
 
 .right-column {
-  width: 35%;
+  width: 50%;
   margin-top: 60px;
 }
 

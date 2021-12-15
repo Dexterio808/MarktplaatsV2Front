@@ -4,11 +4,11 @@ import {Product} from "../../models/product";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-product-zoek',
+  templateUrl: './product-zoek.component.html',
+  styleUrls: ['./product-zoek.component.css']
 })
-export class ProductListComponent {
+export class ProductZoekComponent {
 
   producten$ = this.productService.productenUpdated$;
   producten: Product[] = [];
@@ -39,10 +39,10 @@ export class ProductListComponent {
     })
   }
 
-  goToDetails(id: number): void {
+/*  goToDetails(id: number): void {
     console.log(id);
     this.router.navigate(['/productdetails', id])
-  }
+  }*/
 
   zoekProduct(): void{
     this.productService.search(this.zoekString)
