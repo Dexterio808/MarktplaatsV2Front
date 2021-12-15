@@ -1,0 +1,22 @@
+<h2  routerLink="/productregistratie"><button  class="btn btn-primary pull-right" style="margin-right: 3.0em"> Product toevoegen</button>Mijn Producten</h2>
+<table class="table">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col">Naam</th>
+    <th scope="col">Prijs</th>
+    <th scope="col">Categorie</th>
+    <th scope="col">Soort</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr scope="row" *ngFor="let c of mijnproducten ">
+    <td>{{c.naam}}</td>
+    <td>{{c.prijs}}</td>
+    <td>{{c.categorie.omschrijving}}</td>
+    <td>{{c.soort}}</td>
+    <td><button type="button" class="btn btn-primary" (click)="goToDetails(c.id)">Details</button></td>
+    <td><button type="button" class="btn btn-warning" (click)="delete(c)">Verwijder</button></td>
+  </tr>
+  </tbody>
+</table>
