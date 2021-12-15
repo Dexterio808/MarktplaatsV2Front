@@ -69,9 +69,6 @@ export class ProductFormulierComponent implements OnInit {
 
 
   addProduct(): void {
-    console.log(this.productForm.value, this.productsoort);
-    console.log("loggedinuser: " + this.userService.loggedInUser);
-    console.log("loggedinuser id " + this.userService.loggedInUser.id);
     this.productService.add(this.productForm.value, this.productsoort);
     this.productForm.reset(); //haalt het formulier leeg na registratie
     this.ngOnInit(); //zet het formulier terug naar default values

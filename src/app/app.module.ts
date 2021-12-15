@@ -13,6 +13,8 @@ import {ProductListComponent} from "./components/product-list.component/product-
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import {AuthGuard} from "./util/auth.guard";
 import {ProductZoekComponent} from "./components/product-zoek.component/product-zoek.component";
+import { HomeComponent } from './components/home/home.component';
+import { MijnProductComponent } from './components/mijn-product/mijn-product.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {ProductZoekComponent} from "./components/product-zoek.component/product-
     ProductFormulierComponent,
     ProductListComponent,
     ProductDetailComponent,
-    ProductZoekComponent
+    ProductZoekComponent,
+    HomeComponent,
+    MijnProductComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule,
@@ -33,11 +37,13 @@ import {ProductZoekComponent} from "./components/product-zoek.component/product-
       {
         path: 'producten', component: ProductListComponent, canActivate:[AuthGuard],// has children, so needs to have a router-outlet!
         children: [{
-          path: ':id', component: ProductDetailComponent, canActivate:[AuthGuard]
-        }]
+          path: ':id', component: ProductDetailComponent, canActivate:[AuthGuard]},
+        ]
       },
       {path: 'productdetails/:id', component: ProductDetailComponent, canActivate:[AuthGuard]},
       {path: 'productregistratie', component: ProductFormulierComponent, canActivate:[AuthGuard]},
+      {path: 'home', component: HomeComponent},
+      {path: 'mijnproducten', component: MijnProductComponent, canActivate:[AuthGuard]},
     ])
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],

@@ -4,6 +4,7 @@ import {Observable, Subject} from "rxjs";
 import {serverUrl} from "../../environments/environment";
 import {Product} from "../models/product";
 import {ProductCategorie} from "../models/productcategorie";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,9 @@ export class ProductService {
   uri = serverUrl + '/producten';
   uri2 = serverUrl+ '/artikelen';
   uri3 = serverUrl+ '/diensten';
+  uri4 = serverUrl+ '/producten/gebruiker';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
   }
 
 
@@ -25,6 +27,14 @@ export class ProductService {
 
   getAll(): void {
     this.http.get<Product[]>(this.uri) // get contacts from server
+      .subscribe(                      // when the results arrive (some time in the future):
+        producten => this._productenUpdated$.next(producten)
+      );                               // rise the contactsUpdated event and supply the contacts
+  }
+
+  getAllFromUser(): void {
+    console.log((`${this.uri4}/${this.userService.loggedInUser.id}`))
+    this.http.get<Product[]>(`${this.uri4}/${this.userService.loggedInUser.id}`) // get contacts from server
       .subscribe(                      // when the results arrive (some time in the future):
         producten => this._productenUpdated$.next(producten)
       );                               // rise the contactsUpdated event and supply the contacts

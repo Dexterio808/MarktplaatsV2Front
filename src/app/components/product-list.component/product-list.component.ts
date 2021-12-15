@@ -40,7 +40,6 @@ export class ProductListComponent {
   }
 
   goToDetails(id: number): void {
-    console.log(id);
     this.router.navigate(['/productdetails', id])
   }
 

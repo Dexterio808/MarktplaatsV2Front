@@ -31,22 +31,25 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <img data-image="logo" class="navbar-header" width="50p" height="50" src="assets/img/cirkel-belastingdienst2.png" alt="">
-    <a class="navbar-brand" href="/home">Marktplaats</a>
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="activemenu">Marktplaats</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home" routerLinkActive="activemenu">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" routerLink="/login" routerLinkActive="activemenu">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/gebruikers">Registreren</a>
+        <a class="nav-link" routerLink="/gebruikers" routerLinkActive="activeMenu">Registreren</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/producten">Producten</a>
+        <a class="nav-link" routerLink="/producten" routerLinkActive="activemenu">Producten</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/productregistratie">Product aanbieden</a>
+        <a class = "nav-link" routerLink="/productregistratie" routerLinkActive="activemenu">Product aanbieden</a>
+      </li>
+      <li class="nav-item">
+        <a class = "nav-link" routerLink="/mijnproducten" routerLinkActive="activemenu">Mijn Producten</a>
       </li>
     </ul>
   </div>
