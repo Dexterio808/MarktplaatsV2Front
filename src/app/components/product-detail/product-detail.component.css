@@ -67,7 +67,7 @@ html, body {
   line-height: 24px;
 }
 
-/* Product Configuration */
+/* Betaalwijzen  */
 .product-color span,
 .cable-config span {
   font-size: 14px;
@@ -136,7 +136,7 @@ html, body {
   opacity: 0.5;
 }
 
-/* Cable Configuration */
+/* Bezorgwijzen */
 .cable-choose {
   margin-bottom: 20px;
 }
