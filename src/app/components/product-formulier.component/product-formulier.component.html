@@ -1,75 +1,81 @@
 <h2>Product aanmaken</h2>
 
 <div>
-<div class="ProductRegistreren">
-  <div>
-    <label for="productsoort">Soort:</label>
-    <select id="productsoort" name="productsoort" [(ngModel)]="productsoort">
-      <option value="Artikel">Artikel</option>
-      <option value="Dienst">Dienst</option>
-    </select>
+  <div class="ProductRegistreren">
+    <div>
+      <label for="productsoort">Soort:</label>
+      <div>
+        <select id="productsoort" name="productsoort" [(ngModel)]="productsoort">
+          <option value="Artikel">Artikel</option>
+          <option value="Dienst">Dienst</option>
+        </select>
+      </div>
+    </div>
+
+
+    <form (ngSubmit)="addProduct()" [formGroup]="productForm">
+      <div>
+        <label for="inputNaam">naam:</label>
+        <input type="text" formControlName="naam" name="naam" id="inputNaam" class="form-control">
+      </div>
+      <div>
+        <label for="inputPrijs">prijs:</label>
+        <input type="number" min="0" max="10000" step="0.01" formControlName="prijs" name="prijs" id="inputPrijs"
+               class="form-control">
+      </div>
+      <div>
+        <label for="inputOmschrijving">omschrijving:</label>
+        <input type="text" formControlName="omschrijving" name="omschrijving" id="inputOmschrijving"
+               class="form-control">
+      </div>
+
+      <div>
+        <label for="categorie">Categorie:</label>
+        <div>
+          <select id="categorie" name="categorie" formControlName="categorie">
+            <option *ngFor="let c of categorieen" [value]="c.id">{{c.omschrijving}}</option>
+          </select>
+        </div>
+      </div>
+
+      <p>Betaalwijzen</p>
+      <div formGroupName="betaalwijzen">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="ideal" formControlName="ideal">
+          <label class="form-check-label" for="ideal">IDEAL</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="creditcard" formControlName="creditcard">
+          <label class="form-check-label" for="creditcard">CreditCard</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="contant" formControlName="contant">
+          <label class="form-check-label" for="contant">Contant</label>
+        </div>
+      </div>
+      <hr>
+      <p>Bezorgwijzen</p>
+      <div *ngIf="productsoort=='Artikel'" formGroupName="bezorgwijzen">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="thuis" formControlName="thuis">
+          <label class="form-check-label" for="thuis">Thuis</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="magazijn" formControlName="magazijn">
+          <label class="form-check-label" for="magazijn">Magazijn</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="versturen" formControlName="versturen">
+          <label class="form-check-label" for="versturen">Versturen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rembours" formControlName="rembours">
+          <label class="form-check-label" for="rembours">Rembours</label>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Aanmaken</button>
+      </div>
+    </form>
   </div>
-
-
-  <form (ngSubmit)="addProduct()" [formGroup]="productForm">
-    <div>
-      <label for="inputNaam">naam:</label>
-      <input type="text" formControlName="naam" name="naam" id="inputNaam" class="form-control">
-    </div>
-    <div>
-      <label for="inputPrijs">prijs:</label>
-      <input type="number"min="0" max="10000" step="0.01" formControlName="prijs" name="prijs" id="inputPrijs" class="form-control">
-    </div>
-    <div>
-      <label for="inputOmschrijving">omschrijving:</label>
-      <input type="text" formControlName="omschrijving" name="omschrijving" id="inputOmschrijving" class="form-control">
-    </div>
-
-    <div>
-      <label for="categorie">Categorie:</label>
-      <select id="categorie" name="categorie" formControlName="categorie">
-        <option *ngFor="let c of categorieen" [value]="c.id">{{c.omschrijving}}</option>
-      </select>
-    </div>
-
-    <p>Betaalwijzen</p>
-    <div formGroupName="betaalwijzen">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="ideal" formControlName="ideal">
-        <label class="form-check-label" for="ideal">IDEAL</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="creditcard" formControlName="creditcard">
-        <label class="form-check-label" for="creditcard">CreditCard</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="contant" formControlName="contant">
-        <label class="form-check-label" for="contant">Contant</label>
-      </div>
-    </div>
-    <hr>
-    <p>Bezorgwijzen</p>
-    <div *ngIf="productsoort=='Artikel'" formGroupName="bezorgwijzen">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="thuis" formControlName="thuis">
-        <label class="form-check-label" for="thuis">Thuis</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="magazijn" formControlName="magazijn">
-        <label class="form-check-label" for="magazijn">Magazijn</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="versturen" formControlName="versturen">
-        <label class="form-check-label" for="versturen">Versturen</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="rembours" formControlName="rembours">
-        <label class="form-check-label" for="rembours">Rembours</label>
-      </div>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Aanmaken</button>
-    </div>
-  </form>
-</div>
 </div>
