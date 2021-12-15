@@ -2,12 +2,18 @@
 <form (submit)="login()" novalidate #f="ngForm">
   <div>
     <label for="email">Email:</label>
+  </div>
+  <div>
     <input type="text" id="email" name="email" [(ngModel)]="user.email" required>
   </div>
   <div>
     <label for="wachtwoord">Wachtwoord:</label>
-    <input type="wachtwoord" id="wachtwoord" name="wachtwoord" [(ngModel)]="user.wachtwoord" required>
-    <button [disabled]="f.invalid">Ok</button>
+    </div>
+  <div>
+    <input type="text" id="wachtwoord" name="wachtwoord" [(ngModel)]="user.wachtwoord" required>
+  </div>
+  <div>
+    <button style="margin-top: 1em;" class="btn btn-primary" [disabled]="f.invalid">Login</button>
   </div>
 </form>
 <p>{{message$ | async}}</p>
