@@ -1,10 +1,8 @@
 <main class="container">
 
-  <!-- Left Column / Headphones Image -->
+  <!-- Left Column / Placeholder Image -->
   <div class="left-column">
-    <img data-image="blue" src="http://localhost:4200/cirkel-belastingdienst.png" alt="">
     <img data-image="red" class="active" src="assets/img/cirkel-belastingdienst2.png" alt="">
-    <img data-image="black" src="http://localhost:4200/cirkel-belastingdienst.png" alt="">
   </div>
 
 
@@ -47,10 +45,10 @@
       <div class="cable-config">
         <span>Kies Bezorgwijze</span>
         <div class="cable-choose">
-          <button *ngIf="product.bezorgwijzen.rembours===false">Rembours Versturen</button>
-          <button *ngIf="product.bezorgwijzen.thuis===false">Afhalen Thuis</button>
-          <button *ngIf="product.bezorgwijzen.magazijn===false">Afhalen Magazijn</button>
-          <button *ngIf="product.bezorgwijzen.versturen===false">Versturen</button>
+          <button *ngIf="product.bezorgwijzen.rembours===true">Rembours Versturen</button>
+          <button *ngIf="product.bezorgwijzen.thuis===true">Afhalen Thuis</button>
+          <button *ngIf="product.bezorgwijzen.magazijn===true">Afhalen Magazijn</button>
+          <button *ngIf="product.bezorgwijzen.versturen===true">Versturen</button>
         </div>
       </div>
     </div>

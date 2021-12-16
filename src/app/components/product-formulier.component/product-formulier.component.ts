@@ -1,23 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {
-  AbstractControl,
-  FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
-  ValidationErrors,
-  Validators
 } from '@angular/forms';
 import {Product} from "../../models/product";
-import {Gebruiker} from "../../models/gebruiker";
-import {GebruikerService} from "../../services/gebruiker.service";
 import {ProductService} from "../../services/product.service";
 import {UserService} from "../../services/user.service";
 import {ProductCategorie} from "../../models/productcategorie";
 import {CategorieenService} from "../../services/categorieen.service";
 
-/*function postDateSetter(){
-  return Date.now().toLocaleString('en-GB');*/
 
 @Component({
   selector: 'app-product-formulier',

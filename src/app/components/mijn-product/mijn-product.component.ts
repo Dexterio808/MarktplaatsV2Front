@@ -27,7 +27,7 @@ export class MijnProductComponent implements OnInit {
   }
 
   goToDetails(id: number): void {
-    this.router.navigate(['producten/productdetails', id])
+    this.router.navigate(['productdetails', id])
   }
 
   delete(c: Product) {

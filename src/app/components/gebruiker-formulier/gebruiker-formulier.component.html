@@ -1,3 +1,5 @@
+<h3>Gegevens:</h3>
+
 <div class="gerbuikerRegistreren">
   <form (ngSubmit)="addGebruiker()" [formGroup]="gebruikerForm">
     <div>
@@ -28,6 +30,7 @@
       </div>
     </div>
 
+    <h3>Bezorgwijzen:</h3>
 
     <div formGroupName="bezorgwijzen">
       <div class="form-check">
@@ -47,12 +50,13 @@
         <label class="form-check-label" for="rembours">Rembours</label>
       </div>
     </div>
-    <div>
-      <label><input type="checkbox" formControlName="tos" class ="form-control"> I Have Read the Terms of Service (required)</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="tos" formControlName="tos">
+      <label class="form-check-label" for="tos">I Have Read the Terms of Service (required)</label>
     </div>
     <hr>
     <div>
-      <button type="submit" [disabled]="gebruikerForm.invalid">Registreren</button>
+      <button type="submit" routerLink="/gebruikers" [disabled]="gebruikerForm.invalid">Registreren</button>
     </div>
   </form>
 </div>

@@ -23,7 +23,6 @@ export class ProductZoekComponent {
     this.productService.productenUpdated$
       .subscribe(p => {
         this.producten = p;
-        console.log(this.producten)
         this.addSoort();
       });
     this.productService.getAll();
@@ -38,11 +37,6 @@ export class ProductZoekComponent {
       }
     })
   }
-
-/*  goToDetails(id: number): void {
-    console.log(id);
-    this.router.navigate(['/productdetails', id])
-  }*/
 
   zoekProduct(): void{
     this.productService.search(this.zoekString)
